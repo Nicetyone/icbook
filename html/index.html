@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base target="_parent"> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css" type="text/css">
+    <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+</head>
+<body>
+    
+    
+
+    <div id="phone">
+        <button onclick=goBack() id="przyciskback"> ⮜ </button>
+        <button onClick='document.getElementById("bg-icbook").src="https://ic-book.pl";' id="przyciskresetu"> ⌂ </button>
+        <button onclick=goForward() id="przyciskforward"> ⮞ </button>
+        <button onclick=goRotate() id="przyciskrotate"> ⭮ </button>
+        
+
+        <h6>IC-PHONE</h6>
+
+
+        <div id="notification-area">
+        </div>
+
+        <div id="screen">
+
+            <iframe sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation" src="https://ic-book.pl" id="bg-icbook" frameborder=0 samesite=none secure=true ></iframe>
+
+ 
+    </base>
+    </div>
+    <script src="./index.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <script>
+
+    
+        function notify(type,message) {
+        (()=>{
+            let n = document.createElement("div");
+            let id = Math.random().toString(36).substr(2,10);
+            n.setAttribute("id", id);
+            n.classList.add("notification",type);
+            n.innerText = message;
+            document.getElementById("notification-area").appendChild(n);
+            setTimeout(()=>{
+                var notifications = document.getElementById("notification-area").getElementsByClassName("notification");
+                for(let i=0; i< notifications.length;i++){
+                    if (notifications[i].getAttribute("id") == id){
+                        notifications[i].remove();
+                        break;
+                    }
+                }
+            }, 5000);
+
+        })();
+        }
+
+        
+    </script>
+    
+    
+</body>
+
+
+</html>
+
